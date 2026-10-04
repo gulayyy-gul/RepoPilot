@@ -134,7 +134,7 @@ class RepoPilot:
         if not self.groq_key:
             raise RuntimeError("Add GROQ_API_KEY in Streamlit Secrets.")
         client = Groq(api_key=self.groq_key)
-        response = client.chat.completions.create(model=self.model, messages=[{"role": "system", "content": system}, {"role": "user", "content": user}], temperature=0.2, max_completion_tokens=1200)
+        response = client.chat.completions.create(model=self.model, messages=[{"role": "system", "content": system}, {"role": "user", "content": user}], temperature=0.2, max_completion_tokens=600)
         return response.choices[0].message.content
 
     def answer(self, question):
@@ -168,6 +168,38 @@ class RepoPilot:
         return self.llm("""Generate tests for the target repository. Infer the likely test framework from the context. Return only test code, without markdown fences. Do not invent APIs not visible in the context. Tests are suggestions and may need adjustment.""", f"Target file: {path}\n\nSOURCE:\n{source[:10000]}\n\nRELATED CONTEXT:\n{context[:12000]}")
 
     def check_docs(self):
-        docs = "\n\n".join(f"FILE: {p}\n{self.files_data[p]}" for p in self.repo_info.get("docs", []))
-        code = "\n\n".join(f"FILE: {p}\n{self.files_data[p][:5000]}" for p in self.code_files[:12])
-        return self.llm("""Check documentation against repository code. Report only plausible, evidence-based inconsistencies. For each issue include Documentation file, Code evidence, Issue, and Suggested update. If evidence is insufficient, say so.""", f"DOCUMENTATION:\n{docs[:16000]}\n\nCODE:\n{code[:22000]}")
+        """Check documentation with a deliberately small context window.
+
+        The docs check can otherwise send a very large prompt to Groq.
+        Keeping both sides small makes the hackathon MVP more reliable on
+        Groq rate limits while still demonstrating evidence-based RAG.
+        """
+        docs = "\n\n".join(
+            f"FILE: {p}\n{self.files_data[p]}"
+            for p in self.repo_info.get("docs", [])
+        )
+
+        code = "\n\n".join(
+            f"FILE: {p}\n{self.files_data[p][:2500]}"
+            for p in self.code_files[:6]
+        )
+
+        prompt = (
+            "Check the documentation against the repository code. "
+            "Report only clear, evidence-based inconsistencies.\n\n"
+            "For each issue include:\n"
+            "- Documentation file\n"
+            "- Code evidence\n"
+            "- Issue\n"
+            "- Suggested update\n\n"
+            "If there is not enough evidence, say: "
+            "No clear documentation inconsistency found. "
+            "Keep the response concise."
+        )
+
+        return self.llm(
+            "You are RepoPilot, a careful documentation reviewer. "
+            "Use only the supplied repository evidence. Do not invent "
+            "documentation, code, APIs, or behavior.",
+            f"DOCUMENTATION:\n{docs[:5000]}\n\nCODE:\n{code[:5000]}",
+        )
