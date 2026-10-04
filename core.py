@@ -52,6 +52,7 @@ class RepoPilot:
         self.repo_url = repo_url.rstrip("/")
         self.owner, self.repo = parse_repo_url(self.repo_url)
         self.groq_key = groq_api_key or os.getenv("GROQ_API_KEY", "")
+        self.github_token = os.getenv("GITHUB_TOKEN", "")
         self.model = "openai/gpt-oss-120b"
         self.files_data, self.chunks = {}, []
         self.vectorizer, self.matrix = None, None
@@ -59,7 +60,10 @@ class RepoPilot:
         self.repo_info = {}
 
     def github_get(self, path, params=None):
-        r = requests.get(f"https://api.github.com{path}", headers={"Accept": "application/vnd.github+json"}, params=params, timeout=25)
+        headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
+        if self.github_token:
+            headers["Authorization"] = f"Bearer {self.github_token}"
+        r = requests.get(f"https://api.github.com{path}", headers=headers, params=params, timeout=25)
         if not r.ok:
             raise RuntimeError(f"GitHub API error {r.status_code}: {r.text[:250]}")
         return r.json()
