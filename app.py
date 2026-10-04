@@ -35,14 +35,16 @@ if "analysis_error" not in st.session_state:
 
 
 # ============================================================
-# GLOBAL CSS
+# LIGHT PREMIUM UI
 # ============================================================
 
 st.markdown(
     """
     <style>
 
-    /* ---------- GLOBAL ---------- */
+    /* ========================================================
+       GLOBAL
+       ======================================================== */
 
     @import url(
         'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
@@ -53,307 +55,388 @@ st.markdown(
     }
 
     .stApp {
-        background:
-            radial-gradient(
-                circle at 75% 5%,
-                rgba(32, 254, 107, 0.055),
-                transparent 28%
-            ),
-            radial-gradient(
-                circle at 20% 45%,
-                rgba(76, 94, 175, 0.045),
-                transparent 30%
-            ),
-            #040308;
-        color: #F9F9FD;
+        background: #F7F8FA;
+        color: #15171A;
     }
 
     .main .block-container {
-        max-width: 1450px;
-        padding-top: 2.5rem;
-        padding-bottom: 3rem;
+        max-width: 1440px;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
     }
 
-    /* ---------- SIDEBAR ---------- */
+    /* ========================================================
+       SIDEBAR
+       ======================================================== */
 
     section[data-testid="stSidebar"] {
-        background: #08090D;
-        border-right: 1px solid #1C2028;
+        background: #FFFFFF;
+        border-right: 1px solid #E7E9ED;
     }
 
     section[data-testid="stSidebar"] > div {
-        padding-top: 1.2rem;
+        padding-top: 1.25rem;
     }
 
     .brand {
-        padding: 0.3rem 0.2rem 1.8rem 0.2rem;
+        padding: 0.2rem 0.25rem 1.8rem 0.25rem;
+    }
+
+    .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .brand-mark {
-        display: inline-flex;
-        width: 34px;
-        height: 34px;
+        width: 35px;
+        height: 35px;
+        display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        background: rgba(32, 254, 107, 0.10);
-        border: 1px solid rgba(32, 254, 107, 0.28);
-        color: #20FE6B;
+        background: #E9F9EF;
+        border: 1px solid #C9F0D6;
+        color: #159447;
         font-size: 18px;
         font-weight: 800;
-        margin-right: 9px;
     }
 
     .brand-name {
         font-size: 18px;
         font-weight: 800;
+        color: #16181C;
         letter-spacing: -0.5px;
-        vertical-align: middle;
     }
 
     .brand-sub {
-        color: #777B8D;
+        color: #8A909A;
         font-size: 11px;
-        margin-top: 5px;
-        padding-left: 44px;
+        margin-top: 6px;
+        padding-left: 45px;
     }
 
     .sidebar-section {
-        color: #666A7B;
+        color: #9AA0AA;
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: 1.3px;
+        letter-spacing: 1.2px;
         text-transform: uppercase;
-        margin: 1.3rem 0 0.55rem 0;
+        margin: 1.25rem 0 0.55rem 0;
     }
 
-    /* ---------- BUTTONS ---------- */
+    /* ========================================================
+       SIDEBAR BUTTONS
+       ======================================================== */
 
     .stButton > button {
-        border-radius: 10px;
+        border-radius: 9px;
         border: 1px solid transparent;
         background: transparent;
-        color: #A9ACBC;
+        color: #68707C;
         font-weight: 500;
-        text-align: left;
         transition: all 0.15s ease;
     }
 
     .stButton > button:hover {
-        background: #12161D;
-        border-color: #1C2028;
-        color: #F9F9FD;
+        background: #F4F6F8;
+        border-color: #E5E8EC;
+        color: #17191D;
     }
 
-    /* ---------- SIDEBAR INPUT ---------- */
+    .stButton button[kind="primary"] {
+        background: #18A957 !important;
+        border: 1px solid #18A957 !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+    }
+
+    .stButton button[kind="primary"]:hover {
+        background: #12964B !important;
+        border-color: #12964B !important;
+    }
+
+    /* ========================================================
+       SIDEBAR INPUTS
+       ======================================================== */
 
     section[data-testid="stSidebar"] input {
-        background: #0D1015 !important;
-        border: 1px solid #1C2028 !important;
-        color: #F9F9FD !important;
-        border-radius: 9px !important;
+        background: #F8F9FA !important;
+        border: 1px solid #E1E4E8 !important;
+        color: #202328 !important;
+        border-radius: 8px !important;
     }
 
     section[data-testid="stSidebar"] input:focus {
-        border-color: rgba(32, 254, 107, 0.45) !important;
-        box-shadow: 0 0 0 1px rgba(32, 254, 107, 0.15) !important;
+        border-color: #72C994 !important;
+        box-shadow: 0 0 0 2px rgba(24, 169, 87, 0.08) !important;
     }
 
-    /* ---------- HERO ---------- */
+    /* ========================================================
+       TOP BAR
+       ======================================================== */
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.4rem;
+    }
+
+    .breadcrumb {
+        color: #8B919B;
+        font-size: 12px;
+    }
+
+    .breadcrumb strong {
+        color: #34383F;
+    }
+
+    .connected-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #ECF9F0;
+        color: #158947;
+        border: 1px solid #D1F0DA;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .connected-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #1AAF59;
+    }
+
+    /* ========================================================
+       HERO
+       ======================================================== */
 
     .hero {
         position: relative;
-        padding: 3.5rem 3.5rem 3rem 3.5rem;
-        border: 1px solid #1C2028;
-        border-radius: 22px;
-        background:
-            radial-gradient(
-                circle at 80% 25%,
-                rgba(32, 254, 107, 0.10),
-                transparent 26%
-            ),
-            radial-gradient(
-                circle at 95% 85%,
-                rgba(76, 94, 175, 0.10),
-                transparent 25%
-            ),
-            #0A0C11;
+        background: #FFFFFF;
+        border: 1px solid #E5E8EC;
+        border-radius: 20px;
+        padding: 3.4rem 3.5rem;
         overflow: hidden;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.3rem;
+        box-shadow: 0 8px 35px rgba(26, 32, 44, 0.035);
     }
 
-    .hero:after {
+    .hero::after {
         content: "";
         position: absolute;
-        width: 280px;
-        height: 280px;
-        right: -130px;
-        top: -140px;
+        right: -120px;
+        top: -150px;
+        width: 350px;
+        height: 350px;
         border-radius: 50%;
-        border: 1px solid rgba(32, 254, 107, 0.10);
-        box-shadow:
-            0 0 0 40px rgba(32, 254, 107, 0.025),
-            0 0 0 80px rgba(32, 254, 107, 0.015);
+        background: rgba(36, 185, 98, 0.055);
+        border: 1px solid rgba(36, 185, 98, 0.09);
     }
 
     .eyebrow {
-        display: inline-block;
-        color: #20FE6B;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.4px;
+        color: #159447;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        margin-bottom: 1.1rem;
+        margin-bottom: 1rem;
     }
 
     .hero-title {
-        font-size: clamp(38px, 5vw, 68px);
-        line-height: 0.98;
+        color: #111318;
+        font-size: clamp(38px, 5vw, 66px);
+        line-height: 1;
         letter-spacing: -3px;
         font-weight: 800;
-        max-width: 800px;
         margin: 0;
+        max-width: 850px;
     }
 
     .hero-title span {
-        color: #777B8D;
+        color: #9AA0AA;
     }
 
     .hero-description {
-        max-width: 650px;
-        color: #999DAD;
+        max-width: 680px;
+        color: #707782;
         font-size: 15px;
         line-height: 1.7;
-        margin-top: 1.4rem;
+        margin-top: 1.35rem;
     }
 
-    /* ---------- COMMAND BAR ---------- */
-
-    .command {
-        margin-top: 2rem;
-        display: flex;
+    .hero-mini {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
         align-items: center;
-        gap: 10px;
-        padding: 12px 15px;
-        border: 1px solid #292E38;
-        background: #080A0E;
-        border-radius: 12px;
-        max-width: 670px;
-        box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+        gap: 8px;
+        margin-top: 1.7rem;
+        padding: 9px 13px;
+        background: #F7F9F8;
+        border: 1px solid #DCEFE2;
+        border-radius: 9px;
+        color: #5F6863;
+        font-size: 11px;
     }
 
-    .command-icon {
-        color: #20FE6B;
-        font-size: 17px;
+    .hero-mini-icon {
+        color: #18A957;
+        font-weight: 700;
     }
 
-    .command-text {
-        color: #777B8D;
-        font-size: 13px;
-    }
-
-    .command-key {
-        margin-left: auto;
-        color: #606575;
-        border: 1px solid #252933;
-        background: #101219;
-        border-radius: 6px;
-        padding: 4px 7px;
-        font-size: 10px;
-    }
-
-    /* ---------- SECTION ---------- */
+    /* ========================================================
+       SECTION HEADINGS
+       ======================================================== */
 
     .section-label {
-        color: #666A7B;
+        color: #969CA6;
         font-size: 10px;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: 1.4px;
         text-transform: uppercase;
         margin: 1.5rem 0 0.7rem 0;
     }
 
-    /* ---------- CARDS ---------- */
-
-    .metric-card,
-    .feature-card,
-    .detail-card {
-        background: #0D1015;
-        border: 1px solid #1C2028;
-        border-radius: 15px;
-        padding: 1.15rem;
-        height: 100%;
-        transition: border-color 0.15s ease, transform 0.15s ease;
+    .section-title {
+        color: #17191D;
+        font-size: 21px;
+        font-weight: 750;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.2rem;
     }
 
-    .metric-card:hover,
-    .feature-card:hover,
-    .detail-card:hover {
-        border-color: #303641;
-        transform: translateY(-1px);
+    .section-description {
+        color: #858B95;
+        font-size: 12px;
+        margin-bottom: 1rem;
+    }
+
+    /* ========================================================
+       METRIC CARDS
+       ======================================================== */
+
+    .metric-card {
+        background: #FFFFFF;
+        border: 1px solid #E5E8EC;
+        border-radius: 13px;
+        padding: 1.2rem;
+        min-height: 108px;
+        box-shadow: 0 4px 18px rgba(26, 32, 44, 0.025);
     }
 
     .metric-number {
-        font-size: 26px;
+        color: #17191D;
+        font-size: 25px;
         font-weight: 800;
         letter-spacing: -1px;
     }
 
     .metric-label {
-        color: #707484;
+        color: #8B919B;
         font-size: 11px;
-        margin-top: 4px;
+        margin-top: 5px;
+    }
+
+    .metric-accent {
+        width: 25px;
+        height: 3px;
+        background: #1AAF59;
+        border-radius: 99px;
+        margin-bottom: 11px;
+    }
+
+    /* ========================================================
+       FEATURE CARDS
+       ======================================================== */
+
+    .feature-card {
+        background: #FFFFFF;
+        border: 1px solid #E5E8EC;
+        border-radius: 14px;
+        padding: 1.25rem;
+        min-height: 175px;
+        box-shadow: 0 4px 18px rgba(26, 32, 44, 0.025);
+        transition: all 0.15s ease;
+    }
+
+    .feature-card:hover {
+        border-color: #C9D0D8;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 32, 44, 0.06);
     }
 
     .feature-icon {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 9px;
-        background: rgba(32, 254, 107, 0.08);
-        border: 1px solid rgba(32, 254, 107, 0.18);
-        color: #20FE6B;
-        font-weight: 700;
-        margin-bottom: 0.9rem;
+        border-radius: 10px;
+        background: #EDF9F1;
+        border: 1px solid #D6F0DE;
+        color: #159447;
+        font-size: 15px;
+        font-weight: 800;
+        margin-bottom: 1rem;
     }
 
     .feature-title {
+        color: #1B1E23;
         font-size: 14px;
         font-weight: 700;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.45rem;
     }
 
     .feature-description {
-        color: #777B8D;
+        color: #7C838D;
         font-size: 12px;
-        line-height: 1.55;
+        line-height: 1.6;
+    }
+
+    /* ========================================================
+       DETAIL CARDS
+       ======================================================== */
+
+    .detail-card {
+        background: #FFFFFF;
+        border: 1px solid #E5E8EC;
+        border-radius: 12px;
+        padding: 1.1rem;
+        min-height: 82px;
+        box-shadow: 0 3px 15px rgba(26, 32, 44, 0.02);
     }
 
     .detail-title {
-        color: #666A7B;
-        font-size: 10px;
-        font-weight: 700;
+        color: #969CA6;
+        font-size: 9px;
+        font-weight: 800;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.45rem;
     }
 
     .detail-value {
-        color: #E7E8EE;
+        color: #353A42;
         font-size: 13px;
         line-height: 1.5;
         word-break: break-word;
     }
 
-    /* ---------- STATUS ---------- */
+    /* ========================================================
+       STATUS
+       ======================================================== */
 
     .status-ready {
         display: inline-flex;
         align-items: center;
         gap: 7px;
-        color: #20FE6B;
+        color: #168F49;
         font-size: 11px;
         font-weight: 600;
     }
@@ -361,93 +444,92 @@ st.markdown(
     .status-dot {
         width: 7px;
         height: 7px;
-        background: #20FE6B;
         border-radius: 50%;
-        box-shadow: 0 0 10px rgba(32,254,107,0.55);
+        background: #1AAF59;
     }
 
     .status-neutral {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        color: #8A8E9E;
+        color: #9AA0AA;
         font-size: 11px;
     }
 
-    /* ---------- INPUTS ---------- */
+    /* ========================================================
+       FORM ELEMENTS
+       ======================================================== */
 
     input,
     textarea {
-        background-color: #0D1015 !important;
-        color: #F9F9FD !important;
-        border-color: #1C2028 !important;
+        background-color: #FFFFFF !important;
+        color: #202328 !important;
+        border-color: #DDE1E6 !important;
     }
 
     textarea {
-        border-radius: 11px !important;
+        border-radius: 10px !important;
     }
 
-    /* ---------- PRIMARY BUTTON ---------- */
-
-    .stButton button[kind="primary"] {
-        background: #20FE6B !important;
-        color: #031008 !important;
-        border: none !important;
-        font-weight: 700 !important;
+    input:focus,
+    textarea:focus {
+        border-color: #72C994 !important;
+        box-shadow: 0 0 0 2px rgba(24, 169, 87, 0.08) !important;
     }
 
-    .stButton button[kind="primary"]:hover {
-        background: #43ff83 !important;
-        color: #031008 !important;
-    }
-
-    /* ---------- TABS ---------- */
+    /* ========================================================
+       TABS
+       ======================================================== */
 
     .stTabs [data-baseweb="tab-list"] {
-        gap: 5px;
-        background: transparent;
+        gap: 4px;
+        border-bottom: 1px solid #E5E8EC;
     }
 
     .stTabs [data-baseweb="tab"] {
-        color: #777B8D;
-        border-radius: 8px;
-        padding: 8px 13px;
+        color: #7C838D;
+        padding: 9px 13px;
     }
 
     .stTabs [aria-selected="true"] {
-        color: #F9F9FD !important;
-        background: #11141A;
+        color: #159447 !important;
     }
 
-    /* ---------- CODE ---------- */
-
-    code {
-        color: #B8FFC9 !important;
-    }
+    /* ========================================================
+       CODE
+       ======================================================== */
 
     pre {
-        border: 1px solid #1C2028 !important;
-        border-radius: 12px !important;
+        background: #F8F9FA !important;
+        border: 1px solid #E2E5E9 !important;
+        border-radius: 10px !important;
     }
 
-    /* ---------- DIVIDER ---------- */
+    code {
+        color: #126E39 !important;
+    }
+
+    /* ========================================================
+       DIVIDER
+       ======================================================== */
 
     hr {
-        border-color: #1C2028 !important;
+        border-color: #E7E9ED !important;
     }
 
-    /* ---------- FOOTER ---------- */
+    /* ========================================================
+       FOOTER
+       ======================================================== */
 
     .footer {
         text-align: center;
-        color: #4F5362;
+        color: #A0A5AE;
         font-size: 10px;
         margin-top: 3rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid #151820;
+        padding-top: 1.4rem;
+        border-top: 1px solid #E5E8EC;
     }
 
-    /* ---------- MOBILE ---------- */
+    /* ========================================================
+       MOBILE
+       ======================================================== */
 
     @media (max-width: 900px) {
 
@@ -480,16 +562,23 @@ def get_pilot():
 
 
 def render_sources(sources):
+
     if not sources:
         return
 
-    st.markdown("### Sources")
+    st.markdown(
+        '<div class="section-label">Sources</div>',
+        unsafe_allow_html=True,
+    )
 
     for source in sources:
+
         st.markdown(
             f"""
             <div class="detail-card" style="margin-bottom:8px;">
-                <div class="detail-value">◈ {source}</div>
+                <div class="detail-value">
+                    ◈ {source}
+                </div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -497,17 +586,19 @@ def render_sources(sources):
 
 
 def page_button(label, page_name, icon):
+
     active = st.session_state.page == page_name
 
     if active:
+
         st.markdown(
             f"""
             <div style="
-                background:#12161D;
-                border:1px solid #252B34;
-                border-radius:10px;
+                background:#EDF9F1;
+                border:1px solid #D4EEDF;
+                border-radius:9px;
                 padding:9px 12px;
-                color:#F9F9FD;
+                color:#158947;
                 font-size:13px;
                 font-weight:600;
                 margin-bottom:4px;
@@ -517,12 +608,15 @@ def page_button(label, page_name, icon):
             """,
             unsafe_allow_html=True,
         )
+
     else:
+
         if st.button(
             f"{icon}  {label}",
             key=f"nav_{page_name}",
             use_container_width=True,
         ):
+
             st.session_state.page = page_name
             st.rerun()
 
@@ -536,17 +630,25 @@ with st.sidebar:
     st.markdown(
         """
         <div class="brand">
-            <div>
-                <span class="brand-mark">◈</span>
-                <span class="brand-name">RepoPilot</span>
+
+            <div class="brand-row">
+                <div class="brand-mark">◈</div>
+                <div class="brand-name">RepoPilot</div>
             </div>
-            <div class="brand-sub">AI developer workspace</div>
+
+            <div class="brand-sub">
+                AI developer workspace
+            </div>
+
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    st.markdown('<div class="sidebar-section">Workspace</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="sidebar-section">Workspace</div>',
+        unsafe_allow_html=True,
+    )
 
     page_button("Overview", "Overview", "⌂")
     page_button("Code Q&A", "Code Q&A", "⌘")
@@ -554,7 +656,10 @@ with st.sidebar:
     page_button("Test Generator", "Test Generator", "✓")
     page_button("Docs Check", "Docs Check", "≡")
 
-    st.markdown('<div class="sidebar-section">Repository</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="sidebar-section">Repository</div>',
+        unsafe_allow_html=True,
+    )
 
     repo_url = st.text_input(
         "GitHub repository",
@@ -581,11 +686,18 @@ with st.sidebar:
     ):
 
         if not repo_url.strip():
-            st.error("Enter a GitHub repository URL.")
+
+            st.error(
+                "Enter a GitHub repository URL."
+            )
 
         else:
+
             try:
-                with st.spinner("Analyzing repository..."):
+
+                with st.spinner(
+                    "Analyzing repository..."
+                ):
 
                     pilot = RepoPilot(
                         repo_url.strip(),
@@ -598,16 +710,24 @@ with st.sidebar:
                     st.session_state.repo_url = repo_url.strip()
                     st.session_state.analysis_error = ""
 
-                st.success("Repository analyzed successfully.")
+                st.success(
+                    "Repository analyzed successfully."
+                )
+
                 st.rerun()
 
             except Exception as e:
+
                 st.session_state.analysis_error = str(e)
-                st.error(f"Could not analyze repository: {e}")
+
+                st.error(
+                    f"Could not analyze repository: {e}"
+                )
 
     pilot = get_pilot()
 
     if pilot:
+
         st.markdown("---")
 
         st.markdown(
@@ -620,18 +740,59 @@ with st.sidebar:
             unsafe_allow_html=True,
         )
 
-        st.caption(f"{pilot.owner}/{pilot.repo}")
+        st.caption(
+            f"{pilot.owner}/{pilot.repo}"
+        )
 
     else:
+
         st.markdown(
             """
             <div class="status-neutral">
-                <span>●</span>
-                No repository connected
+                ● No repository connected
             </div>
             """,
             unsafe_allow_html=True,
         )
+
+
+# ============================================================
+# TOP BAR
+# ============================================================
+
+pilot = get_pilot()
+
+repo_name = (
+    f"{pilot.owner}/{pilot.repo}"
+    if pilot
+    else "No repository"
+)
+
+st.markdown(
+    f"""
+    <div class="topbar">
+
+        <div class="breadcrumb">
+            RepoPilot&nbsp;&nbsp;/&nbsp;&nbsp;
+            <strong>{st.session_state.page}</strong>
+        </div>
+
+        <div>
+            {
+                '<div class="connected-pill">'
+                '<span class="connected-dot"></span>'
+                + repo_name +
+                '</div>'
+                if pilot
+                else
+                '<div class="breadcrumb">Connect a repository to begin</div>'
+            }
+        </div>
+
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 # ============================================================
@@ -646,25 +807,25 @@ if st.session_state.page == "Overview":
         """
         <div class="hero">
 
-            <div class="eyebrow">AI Developer Workspace</div>
+            <div class="eyebrow">
+                AI Developer Workspace
+            </div>
 
             <h1 class="hero-title">
-                Your repository.<br>
-                <span>But intelligent.</span>
+                Understand your codebase.<br>
+                <span>Ship with confidence.</span>
             </h1>
 
             <div class="hero-description">
-                RepoPilot understands your codebase, answers technical
-                questions, reviews pull requests, generates tests,
-                and checks your documentation — all from one workspace.
+                RepoPilot is your AI teammate for GitHub.
+                Analyze repositories, ask questions about your code,
+                review pull requests, generate tests, and keep
+                documentation consistent — all from one workspace.
             </div>
 
-            <div class="command">
-                <div class="command-icon">⌕</div>
-                <div class="command-text">
-                    Ask anything about your repository...
-                </div>
-                <div class="command-key">AI</div>
+            <div class="hero-mini">
+                <span class="hero-mini-icon">✦</span>
+                Connect a repository from the sidebar to get started
             </div>
 
         </div>
@@ -676,6 +837,10 @@ if st.session_state.page == "Overview":
 
         info = pilot.repo_info
 
+        # ----------------------------------------------------
+        # SNAPSHOT
+        # ----------------------------------------------------
+
         st.markdown(
             '<div class="section-label">Repository snapshot</div>',
             unsafe_allow_html=True,
@@ -684,103 +849,154 @@ if st.session_state.page == "Overview":
         c1, c2, c3, c4 = st.columns(4)
 
         with c1:
+
             st.markdown(
                 f"""
                 <div class="metric-card">
-                    <div class="metric-number">{info.get("files", 0)}</div>
-                    <div class="metric-label">Files indexed</div>
+                    <div class="metric-accent"></div>
+                    <div class="metric-number">
+                        {info.get("files", 0)}
+                    </div>
+                    <div class="metric-label">
+                        Files indexed
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
         with c2:
+
             st.markdown(
                 f"""
                 <div class="metric-card">
-                    <div class="metric-number">{info.get("chunks", 0)}</div>
-                    <div class="metric-label">Knowledge chunks</div>
+                    <div class="metric-accent"></div>
+                    <div class="metric-number">
+                        {info.get("chunks", 0)}
+                    </div>
+                    <div class="metric-label">
+                        Knowledge chunks
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
         with c3:
-            languages = info.get("languages", [])
+
+            languages = info.get(
+                "languages",
+                [],
+            )
 
             st.markdown(
                 f"""
                 <div class="metric-card">
-                    <div class="metric-number">{len(languages)}</div>
-                    <div class="metric-label">Languages detected</div>
+                    <div class="metric-accent"></div>
+                    <div class="metric-number">
+                        {len(languages)}
+                    </div>
+                    <div class="metric-label">
+                        Languages detected
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
         with c4:
+
             st.markdown(
                 """
                 <div class="metric-card">
-                    <div class="metric-number">Ready</div>
-                    <div class="metric-label">Workspace status</div>
+                    <div class="metric-accent"></div>
+                    <div class="metric-number">
+                        Ready
+                    </div>
+                    <div class="metric-label">
+                        Workspace status
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
+        # ----------------------------------------------------
+        # FEATURES
+        # ----------------------------------------------------
+
         st.markdown(
-            '<div class="section-label">What RepoPilot can do</div>',
+            '<div class="section-label">AI tools</div>',
             unsafe_allow_html=True,
         )
 
-        f1, f2, f3 = st.columns(3)
+        st.markdown(
+            '<div class="section-title">Everything you need to work with a repo</div>',
+            unsafe_allow_html=True,
+        )
 
-        features = [
+        st.markdown(
+            '<div class="section-description">One workspace for understanding, reviewing, testing, and maintaining your code.</div>',
+            unsafe_allow_html=True,
+        )
+
+        f1, f2, f3, f4 = st.columns(4)
+
+        feature_data = [
             (
                 f1,
                 "⌘",
-                "Codebase Q&A",
+                "Code Q&A",
                 "Ask questions about architecture, functions, files, and implementation details.",
             ),
             (
                 f2,
                 "↗",
                 "PR Review",
-                "Inspect pull requests and surface evidence-based issues and recommendations.",
+                "Review pull requests and surface evidence-based issues and recommendations.",
             ),
             (
                 f3,
                 "✓",
                 "Test Generator",
-                "Generate practical test suggestions using the repository's existing context.",
+                "Generate practical test suggestions using your repository's existing context.",
             ),
             (
-                f1,
+                f4,
                 "≡",
                 "Docs Check",
                 "Compare documentation against code and identify clear inconsistencies.",
             ),
         ]
 
-        for index, (column, icon, title, description) in enumerate(features):
-
-            if index == 3:
-                st.markdown("<br>", unsafe_allow_html=True)
+        for column, icon, title, description in feature_data:
 
             with column:
+
                 st.markdown(
                     f"""
                     <div class="feature-card">
-                        <div class="feature-icon">{icon}</div>
-                        <div class="feature-title">{title}</div>
+
+                        <div class="feature-icon">
+                            {icon}
+                        </div>
+
+                        <div class="feature-title">
+                            {title}
+                        </div>
+
                         <div class="feature-description">
                             {description}
                         </div>
+
                     </div>
                     """,
                     unsafe_allow_html=True,
                 )
+
+        # ----------------------------------------------------
+        # REPOSITORY DETAILS
+        # ----------------------------------------------------
 
         st.markdown(
             '<div class="section-label">Repository details</div>',
@@ -790,119 +1006,235 @@ if st.session_state.page == "Overview":
         d1, d2, d3 = st.columns(3)
 
         with d1:
+
             st.markdown(
                 f"""
                 <div class="detail-card">
-                    <div class="detail-title">Repository</div>
+
+                    <div class="detail-title">
+                        Repository
+                    </div>
+
                     <div class="detail-value">
                         {info.get("name", "Unknown")}
                     </div>
+
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
         with d2:
-            languages_text = ", ".join(info.get("languages", []))
+
+            languages_text = ", ".join(
+                info.get("languages", [])
+            )
+
             if not languages_text:
                 languages_text = "Not detected"
 
             st.markdown(
                 f"""
                 <div class="detail-card">
-                    <div class="detail-title">Languages</div>
+
+                    <div class="detail-title">
+                        Languages
+                    </div>
+
                     <div class="detail-value">
                         {languages_text}
                     </div>
+
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
         with d3:
+
             st.markdown(
                 f"""
                 <div class="detail-card">
-                    <div class="detail-title">Default branch</div>
+
+                    <div class="detail-title">
+                        Default branch
+                    </div>
+
                     <div class="detail-value">
                         {info.get("branch", "Unknown")}
                     </div>
+
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
-        st.markdown(
-            '<div class="section-label">Key directories</div>',
-            unsafe_allow_html=True,
-        )
+        # ----------------------------------------------------
+        # DIRECTORIES
+        # ----------------------------------------------------
 
-        directories = info.get("directories", [])
+        directories = info.get(
+            "directories",
+            [],
+        )
 
         if directories:
 
-            cols = st.columns(min(4, max(1, len(directories))))
+            st.markdown(
+                '<div class="section-label">Key directories</div>',
+                unsafe_allow_html=True,
+            )
 
-            for i, directory in enumerate(directories[:8]):
+            directory_columns = st.columns(4)
 
-                with cols[i % len(cols)]:
+            for i, directory in enumerate(
+                directories[:8]
+            ):
+
+                with directory_columns[i % 4]:
+
                     st.markdown(
                         f"""
-                        <div class="detail-card">
+                        <div class="detail-card"
+                             style="margin-bottom:10px;">
+
                             <div class="detail-value">
                                 / {directory}
                             </div>
+
                         </div>
                         """,
                         unsafe_allow_html=True,
                     )
 
-        st.markdown(
-            """
-            <div class="footer">
-                RepoPilot · AI teammate for GitHub repositories
-            </div>
-            """,
-            unsafe_allow_html=True,
+        # ----------------------------------------------------
+        # TESTS + DOCS
+        # ----------------------------------------------------
+
+        test_files = info.get(
+            "tests",
+            [],
         )
+
+        doc_files = info.get(
+            "docs",
+            [],
+        )
+
+        if test_files or doc_files:
+
+            st.markdown(
+                '<div class="section-label">Repository health</div>',
+                unsafe_allow_html=True,
+            )
+
+            h1, h2 = st.columns(2)
+
+            with h1:
+
+                st.markdown(
+                    f"""
+                    <div class="detail-card">
+
+                        <div class="detail-title">
+                            Test files detected
+                        </div>
+
+                        <div class="detail-value">
+                            {len(test_files)}
+                        </div>
+
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            with h2:
+
+                st.markdown(
+                    f"""
+                    <div class="detail-card">
+
+                        <div class="detail-title">
+                            Documentation files
+                        </div>
+
+                        <div class="detail-value">
+                            {len(doc_files)}
+                        </div>
+
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
 
     else:
 
+        # ----------------------------------------------------
+        # EMPTY STATE
+        # ----------------------------------------------------
+
         st.markdown(
-            """
-            <div class="section-label">Get started</div>
-            """,
+            '<div class="section-label">Get started</div>',
             unsafe_allow_html=True,
         )
 
-        st.markdown(
-            """
-            <div class="detail-card">
+        e1, e2 = st.columns([1.5, 1])
 
-                <div class="detail-title">
-                    Connect your repository
+        with e1:
+
+            st.markdown(
+                """
+                <div class="detail-card"
+                     style="min-height:180px;">
+
+                    <div class="detail-title">
+                        Connect your repository
+                    </div>
+
+                    <div class="detail-value">
+
+                        Enter a public GitHub repository URL
+                        in the sidebar and click
+                        <b>Analyze Repository</b>.
+
+                        <br><br>
+
+                        RepoPilot will fetch the repository,
+                        build a searchable index, and prepare
+                        your AI developer workspace.
+
+                    </div>
+
                 </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
-                <div class="detail-value">
-                    Enter a public GitHub repository in the sidebar
-                    and click <b>Analyze Repository</b>.
-                    RepoPilot will index the repository and prepare
-                    the AI workspace.
+        with e2:
+
+            st.markdown(
+                """
+                <div class="detail-card"
+                     style="min-height:180px;">
+
+                    <div class="detail-title">
+                        Workflow
+                    </div>
+
+                    <div class="detail-value">
+
+                        <b>01</b> Connect<br>
+                        <b>02</b> Analyze<br>
+                        <b>03</b> Index<br>
+                        <b>04</b> Ask & Assist
+
+                    </div>
+
                 </div>
-
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        st.markdown(
-            """
-            <div class="footer">
-                RepoPilot · Connect → Analyze → Index → Assist
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+                """,
+                unsafe_allow_html=True,
+            )
 
 
 # ============================================================
@@ -913,10 +1245,19 @@ elif st.session_state.page == "Code Q&A":
 
     pilot = get_pilot()
 
-    st.title("Code Q&A")
+    st.markdown(
+        """
+        <div class="section-label">Repository intelligence</div>
 
-    st.caption(
-        "Ask questions about the indexed repository."
+        <div class="section-title">
+            Codebase Q&A
+        </div>
+
+        <div class="section-description">
+            Ask questions and get answers grounded in your indexed repository.
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     if not pilot:
@@ -934,7 +1275,7 @@ elif st.session_state.page == "Code Q&A":
                 "Example: How are requests retried?\n"
                 "Example: What is the purpose of the main module?"
             ),
-            height=130,
+            height=140,
         )
 
         if st.button(
@@ -944,11 +1285,15 @@ elif st.session_state.page == "Code Q&A":
 
             if not question.strip():
 
-                st.warning("Enter a question first.")
+                st.warning(
+                    "Enter a question first."
+                )
 
             else:
 
-                with st.spinner("Searching the codebase..."):
+                with st.spinner(
+                    "Searching the codebase..."
+                ):
 
                     try:
 
@@ -956,11 +1301,15 @@ elif st.session_state.page == "Code Q&A":
                             question.strip()
                         )
 
-                        st.markdown("### Answer")
+                        st.markdown(
+                            "### Answer"
+                        )
 
                         st.markdown(answer)
 
-                        render_sources(sources)
+                        render_sources(
+                            sources
+                        )
 
                     except Exception as e:
 
@@ -977,10 +1326,19 @@ elif st.session_state.page == "PR Review":
 
     pilot = get_pilot()
 
-    st.title("PR Review")
+    st.markdown(
+        """
+        <div class="section-label">Code quality</div>
 
-    st.caption(
-        "Review open pull requests using repository context."
+        <div class="section-title">
+            Pull Request Review
+        </div>
+
+        <div class="section-description">
+            Review open pull requests using repository context.
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     if not pilot:
@@ -998,6 +1356,7 @@ elif st.session_state.page == "PR Review":
         except Exception as e:
 
             prs = []
+
             st.error(
                 f"Could not load pull requests: {e}"
             )
@@ -1024,14 +1383,19 @@ elif st.session_state.page == "PR Review":
 
             st.markdown(
                 f"""
-                <div class="detail-card">
+                <div class="detail-card"
+                     style="margin-top:12px;">
+
                     <div class="detail-title">
                         Pull Request
                     </div>
+
                     <div class="detail-value">
-                        #{selected_pr["number"]} ·
+                        #{selected_pr["number"]}
+                        ·
                         {selected_pr["title"]}
                     </div>
+
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -1039,7 +1403,9 @@ elif st.session_state.page == "PR Review":
 
             if selected_pr.get("body"):
 
-                with st.expander("PR description"):
+                with st.expander(
+                    "View PR description"
+                ):
 
                     st.write(
                         selected_pr["body"]
@@ -1060,7 +1426,9 @@ elif st.session_state.page == "PR Review":
                             selected_pr
                         )
 
-                        st.markdown("### Review")
+                        st.markdown(
+                            "### Review"
+                        )
 
                         st.markdown(result)
 
@@ -1079,10 +1447,19 @@ elif st.session_state.page == "Test Generator":
 
     pilot = get_pilot()
 
-    st.title("Test Generator")
+    st.markdown(
+        """
+        <div class="section-label">Developer productivity</div>
 
-    st.caption(
-        "Generate test suggestions using the repository's context."
+        <div class="section-title">
+            Test Generator
+        </div>
+
+        <div class="section-description">
+            Generate test suggestions based on your repository's code and context.
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     if not pilot:
@@ -1153,10 +1530,19 @@ elif st.session_state.page == "Docs Check":
 
     pilot = get_pilot()
 
-    st.title("Documentation Check")
+    st.markdown(
+        """
+        <div class="section-label">Documentation quality</div>
 
-    st.caption(
-        "Compare documentation with the indexed repository code."
+        <div class="section-title">
+            Documentation Check
+        </div>
+
+        <div class="section-description">
+            Compare repository documentation with the actual code.
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     if not pilot:
@@ -1184,9 +1570,11 @@ elif st.session_state.page == "Docs Check":
                     f"""
                     <div class="detail-card"
                          style="margin-bottom:8px;">
+
                         <div class="detail-value">
                             ≡ {doc}
                         </div>
+
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -1227,10 +1615,15 @@ elif st.session_state.page == "Docs Check":
 
 
 # ============================================================
-# FALLBACK
+# FOOTER
 # ============================================================
 
-else:
-
-    st.session_state.page = "Overview"
-    st.rerun()
+st.markdown(
+    """
+    <div class="footer">
+        RepoPilot&nbsp;&nbsp;·&nbsp;&nbsp;
+        AI teammate for GitHub repositories
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
